@@ -9,8 +9,10 @@ class PostsController extends Controller
 {
     public function store()
     {
+        dd(request()->all());
+        
         $post = Post::create([
-            'body' => request('body'),
+            'body' => request('body', ''),
             'user_id' => auth()->user()->id,
         ]);
 
