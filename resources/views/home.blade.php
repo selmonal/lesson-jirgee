@@ -11,12 +11,16 @@
                 <input class="form-control" name="body" placeholder="What is happening?"></input>
             </div>
 
-            <input type="file" name="image" id="post-file" class="d-none" onchange="$('#post-form').submit()">
+            <input type="file" name="media" id="post-file" class="d-none" />
 
             <div>
                 <div class="float-left">
                     <button type="button" class="btn btn-light" onclick="$('#post-file').click()">
                         <i class="fa fa-image"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-light" onclick="$('#post-file').click()">
+                        <i class="fa fa-video-camera"></i>
                     </button>
                 </div>
 
@@ -37,6 +41,17 @@
             </h6>
 
             {{ $post->body }}
+
+            <div>
+                @if($post->media_type === 'image')
+                    <img src="{{ $post->media_path }}" alt="" class="img-fluid">
+                @elseif($post->media_type === 'video')
+                    <video width="250" height="150" controls>
+                      <source src="{{ asset($post->media_path) }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                @endif
+            </div>
           </div>
 
           @if ($post->user_id === auth()->user()->id)

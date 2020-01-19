@@ -26,3 +26,6 @@ Route::get('settings/profile', 'ProfileSettingsController@show');
 Route::post('settings/profile/update-image', 'UserImageController@update');
 
 Route::delete('/posts/{post}', 'PostsController@destroy');
+
+
+Route::get('/users/{user}', 'UsersController@show');

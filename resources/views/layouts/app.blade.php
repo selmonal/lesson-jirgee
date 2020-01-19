@@ -90,6 +90,12 @@
                                   Home
                               </a>
                           </li>
+
+                          <li class="list-group-item">
+                              <a href="/users/{{ auth()->user()->id }}">
+                                  Profile
+                              </a>
+                          </li>
                         </ul>
                     </div>
 
