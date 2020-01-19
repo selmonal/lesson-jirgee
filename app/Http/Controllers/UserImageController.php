@@ -14,6 +14,8 @@ class UserImageController extends Controller
 
         auth()->user()->update(['image_path' => $path]);
 
-    	return redirect()->to('/settings/profile');
+    	return redirect()
+    		->to('/settings/profile')
+    		->with('message', 'Your profile has been updated.');
     }
 }
